@@ -1,4 +1,4 @@
-# Guía técnica del Gestor de tareas 2
+# Guía técnica de App Gestor de tareas Noelia
 
 El [README](../README.md) explica cómo instalar el proyecto, iniciarlo y comprobar el funcionamiento básico.
 

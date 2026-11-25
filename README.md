@@ -1,4 +1,4 @@
-# Gestor de tareas 2
+# App Gestor de tareas Noelia
 
 Aplicación del taller para crear, editar, completar, eliminar y filtrar tareas. El título, la descripción y el estado se guardan en la API compartida del curso. Cada navegador o instalación guarda sus propias prioridades.
 
