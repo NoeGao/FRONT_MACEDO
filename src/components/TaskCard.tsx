@@ -1,3 +1,4 @@
+import { colors } from '../colors';
 import { useState } from 'react';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { priorityLabels, type Task } from '../types/task';
@@ -61,26 +62,26 @@ export function TaskCard({ task, onToggle, onDelete, onEdit, disabled = false }:
 }
 
 const styles = StyleSheet.create({
-  card: { backgroundColor: '#FFFFFF', borderRadius: 17, padding: 16, marginBottom: 11, borderWidth: 1, borderColor: '#E7EBF3' },
+  card: { backgroundColor: colors.surface, borderRadius: 17, padding: 16, marginBottom: 11, borderWidth: 1, borderColor: colors.border },
   topLine: { flexDirection: 'row', alignItems: 'center', gap: 12 },
-  check: { height: 25, width: 25, borderRadius: 8, borderWidth: 2, borderColor: '#A9B2C6', justifyContent: 'center', alignItems: 'center' },
-  checked: { backgroundColor: '#147D73', borderColor: '#147D73' },
-  checkText: { color: '#FFFFFF', fontWeight: '900', fontSize: 16 },
+  check: { height: 25, width: 25, borderRadius: 8, borderWidth: 2, borderColor: colors.strongBorder, justifyContent: 'center', alignItems: 'center' },
+  checked: { backgroundColor: colors.accent, borderColor: colors.accent },
+  checkText: { color: colors.onAccent, fontWeight: '900', fontSize: 16 },
   content: { flex: 1 },
-  title: { color: '#192846', fontSize: 15, fontWeight: '800', lineHeight: 21 },
-  completed: { color: '#97A1B3', textDecorationLine: 'line-through' },
+  title: { color: colors.text, fontSize: 15, fontWeight: '800', lineHeight: 21 },
+  completed: { color: colors.muted, textDecorationLine: 'line-through' },
   row: { flexDirection: 'row', alignItems: 'center', gap: 7, marginTop: 6 },
-  priority: { fontSize: 10, letterSpacing: 0.5, color: '#56738F', fontWeight: '800' },
-  alta: { color: '#AD4138' },
-  media: { color: '#865B15' },
-  baja: { color: '#256957' },
-  sin: { color: '#687589' },
-  dividerText: { color: '#B0BAC9', fontSize: 11 },
-  state: { color: '#63728C', fontSize: 11 },
-  expandButton: { width: 30, height: 30, borderRadius: 9, backgroundColor: '#ECF2F7', justifyContent: 'center', alignItems: 'center' },
-  expandText: { color: '#294665', fontWeight: '800', fontSize: 19 },
-  details: { marginTop: 13, paddingTop: 12, borderTopWidth: 1, borderTopColor: '#E9EEF4' },
-  description: { fontSize: 13, color: '#53627E', lineHeight: 20 },
-  deleteButton: { alignSelf: 'flex-start', marginTop: 13, paddingVertical: 8, paddingHorizontal: 12, backgroundColor: '#FFF0F0', borderRadius: 9 },
-  deleteText: { color: '#B63D4E', fontSize: 12, fontWeight: '800' },
+  priority: { fontSize: 10, letterSpacing: 0.5, color: colors.muted, fontWeight: '800' },
+  alta: { color: colors.danger },
+  media: { color: colors.warning },
+  baja: { color: colors.success },
+  sin: { color: colors.muted },
+  dividerText: { color: colors.muted, fontSize: 11 },
+  state: { color: colors.muted, fontSize: 11 },
+  expandButton: { width: 30, height: 30, borderRadius: 9, backgroundColor: colors.raised, justifyContent: 'center', alignItems: 'center' },
+  expandText: { color: colors.text, fontWeight: '800', fontSize: 19 },
+  details: { marginTop: 13, paddingTop: 12, borderTopWidth: 1, borderTopColor: colors.border },
+  description: { fontSize: 13, color: colors.muted, lineHeight: 20 },
+  deleteButton: { alignSelf: 'flex-start', marginTop: 13, paddingVertical: 8, paddingHorizontal: 12, backgroundColor: colors.dangerSurface, borderRadius: 9 },
+  deleteText: { color: colors.danger, fontSize: 12, fontWeight: '800' },
 });

@@ -1,3 +1,4 @@
+import { colors } from '../src/colors';
 import { router } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
 import { ScrollView, Pressable, StyleSheet, Text, View } from 'react-native';
@@ -38,18 +39,18 @@ export default function GuiaScreen() {
 }
 
 const styles = StyleSheet.create({
-  screen: { flex: 1, backgroundColor: '#F5F7FB' },
+  screen: { flex: 1, backgroundColor: colors.background },
   content: { paddingHorizontal: 22, paddingBottom: 35, paddingTop: 14 },
   back: { paddingVertical: 10, marginBottom: 20 },
-  backText: { color: '#137B70', fontWeight: '800' },
-  eyebrow: { fontSize: 10, letterSpacing: 1.6, color: '#178B7B', fontWeight: '900' },
-  title: { fontSize: 29, color: '#1B2D4A', fontWeight: '900', marginTop: 10, lineHeight: 35 },
-  intro: { fontSize: 14, color: '#69788F', lineHeight: 23, marginTop: 13, marginBottom: 22 },
-  callout: { backgroundColor: '#1A2E4C', borderRadius: 16, padding: 18, marginBottom: 20 },
-  calloutTitle: { fontSize: 15, fontWeight: '900', color: '#FFFFFF' },
-  calloutText: { marginTop: 7, color: '#DCE6F4', lineHeight: 20 },
-  mission: { flexDirection: 'row', backgroundColor: '#FFFFFF', padding: 16, borderRadius: 13, gap: 14, marginBottom: 9 },
-  number: { color: '#168A7A', fontWeight: '900' },
-  missionText: { flex: 1, color: '#314864', lineHeight: 20, fontSize: 13 },
-  note: { marginTop: 22, color: '#60718A', fontStyle: 'italic', lineHeight: 19 },
+  backText: { color: colors.accent, fontWeight: '800' },
+  eyebrow: { fontSize: 10, letterSpacing: 1.6, color: colors.accent, fontWeight: '900' },
+  title: { fontSize: 29, color: colors.text, fontWeight: '900', marginTop: 10, lineHeight: 35 },
+  intro: { fontSize: 14, color: colors.muted, lineHeight: 23, marginTop: 13, marginBottom: 22 },
+  callout: { backgroundColor: colors.accentSurface, borderRadius: 16, padding: 18, marginBottom: 20 },
+  calloutTitle: { fontSize: 15, fontWeight: '900', color: colors.text },
+  calloutText: { marginTop: 7, color: colors.muted, lineHeight: 20 },
+  mission: { flexDirection: 'row', backgroundColor: colors.surface, padding: 16, borderRadius: 13, gap: 14, marginBottom: 9 },
+  number: { color: colors.accent, fontWeight: '900' },
+  missionText: { flex: 1, color: colors.muted, lineHeight: 20, fontSize: 13 },
+  note: { marginTop: 22, color: colors.muted, fontStyle: 'italic', lineHeight: 19 },
 });

@@ -1,3 +1,4 @@
+import { colors } from '../colors';
 import { Pressable, StyleSheet, Text, View } from 'react-native';
 import { priorityLabels, type TaskPriority } from '../types/task';
 
@@ -30,8 +31,8 @@ export function PrioritySelector({ selected, onChange, onSelectAll, disabled = f
 
 const styles = StyleSheet.create({
   row: { flexDirection: 'row', flexWrap: 'wrap', gap: 6, marginBottom: 13 },
-  choice: { borderRadius: 10, paddingHorizontal: 11, paddingVertical: 10, backgroundColor: '#E5EFEC' },
-  selected: { backgroundColor: '#20574F' },
-  text: { color: '#28584E', fontSize: 12, fontWeight: '700' },
-  selectedText: { color: '#FFFFFF' },
+  choice: { borderRadius: 10, paddingHorizontal: 11, paddingVertical: 10, backgroundColor: colors.accentSurface },
+  selected: { backgroundColor: colors.accent },
+  text: { color: colors.accent, fontSize: 12, fontWeight: '700' },
+  selectedText: { color: colors.onAccent },
 });

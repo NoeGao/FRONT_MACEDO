@@ -1,3 +1,4 @@
+import { colors } from '../src/colors';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { router } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
@@ -177,8 +178,8 @@ export default function TaskManagerScreen() {
               <View style={styles.stat}><Text style={styles.statLabel}>PENDIENTES</Text><Text style={styles.statNumber}>{tasks.length - completed}</Text></View>
             </View>
             <Text style={styles.label}>{editing ? 'EDITAR TAREA' : 'NUEVA TAREA'}</Text>
-            <TextInput testID="new-task-input" accessibilityLabel="Título de la tarea" placeholder="Ej.: Revisar documentación" placeholderTextColor="#95A0B3" value={title} onChangeText={setTitle} editable={!busy} maxLength={100} style={styles.searchInput} />
-            <TextInput testID="task-description-input" accessibilityLabel="Descripción de la tarea" placeholder="Descripción (opcional)" placeholderTextColor="#95A0B3" value={description} onChangeText={setDescription} editable={!busy} maxLength={255} multiline style={styles.searchInput} />
+            <TextInput testID="new-task-input" accessibilityLabel="Título de la tarea" placeholder="Ej.: Revisar documentación" placeholderTextColor={colors.muted} value={title} onChangeText={setTitle} editable={!busy} maxLength={100} style={styles.searchInput} />
+            <TextInput testID="task-description-input" accessibilityLabel="Descripción de la tarea" placeholder="Descripción (opcional)" placeholderTextColor={colors.muted} value={description} onChangeText={setDescription} editable={!busy} maxLength={255} multiline style={styles.searchInput} />
             <Text style={styles.label}>PRIORIDAD EN ESTE DISPOSITIVO</Text>
             <PrioritySelector selected={priority} onChange={setPriority} disabled={busy} />
             <View style={styles.actions}>
@@ -189,7 +190,7 @@ export default function TaskManagerScreen() {
             </View>
             {feedback ? <Text accessibilityLiveRegion="polite" style={styles.feedback}>{feedback}</Text> : null}
             <Text style={[styles.label, styles.sectionHeading]}>TAREAS COMPARTIDAS</Text>
-            <TextInput testID="search-input" accessibilityLabel="Buscar tareas" placeholder="Buscar por nombre..." placeholderTextColor="#95A0B3" value={query} onChangeText={setQuery} style={styles.searchInput} />
+            <TextInput testID="search-input" accessibilityLabel="Buscar tareas" placeholder="Buscar por nombre..." placeholderTextColor={colors.muted} value={query} onChangeText={setQuery} style={styles.searchInput} />
             <StatusTabs current={status} onChange={setStatus} />
             <Text style={styles.label}>FILTRAR POR PRIORIDAD</Text>
             <PrioritySelector selected={priorityFilter} onChange={setPriorityFilter} onSelectAll={() => setPriorityFilter('todas')} />
@@ -197,7 +198,7 @@ export default function TaskManagerScreen() {
               <Text style={styles.retryLabel}>Recargar tareas</Text>
             </Pressable>
             {error ? <Text accessibilityRole="alert" style={styles.error}>{error}</Text> : null}
-            {busy ? <View style={styles.loading}><ActivityIndicator color="#147D73" /><Text style={styles.loadingLabel}>{operation === 'load' ? 'Consultando tareas...' : 'Guardando cambios...'}</Text></View> : null}
+            {busy ? <View style={styles.loading}><ActivityIndicator color={colors.accent} /><Text style={styles.loadingLabel}>{operation === 'load' ? 'Consultando tareas...' : 'Guardando cambios...'}</Text></View> : null}
           </>
         }
         ListEmptyComponent={!busy && !error ? <Text style={styles.empty}>No hay tareas para mostrar con estos filtros.</Text> : null}
@@ -209,32 +210,32 @@ export default function TaskManagerScreen() {
 
 
 const styles = StyleSheet.create({
-  screen: { flex: 1, backgroundColor: '#F5F7FB' },
+  screen: { flex: 1, backgroundColor: colors.background },
   listContainer: { paddingHorizontal: 19, paddingTop: 18, paddingBottom: 55, flexGrow: 1 },
   eyebrowRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end' },
-  helpButton: { backgroundColor: '#E5EFEC', paddingVertical: 8, paddingHorizontal: 11, borderRadius: 9 },
-  helpText: { fontWeight: '800', color: '#187A71', fontSize: 12 },
-  heading: { fontSize: 30, fontWeight: '900', color: '#172743', marginTop: 12 },
-  subtitle: { color: '#75829A', fontSize: 13, marginTop: 7, marginBottom: 21, lineHeight: 20 },
+  helpButton: { backgroundColor: colors.accentSurface, paddingVertical: 8, paddingHorizontal: 11, borderRadius: 9 },
+  helpText: { fontWeight: '800', color: colors.accent, fontSize: 12 },
+  heading: { fontSize: 30, fontWeight: '900', color: colors.text, marginTop: 12 },
+  subtitle: { color: colors.muted, fontSize: 13, marginTop: 7, marginBottom: 21, lineHeight: 20 },
   statsRow: { flexDirection: 'row', gap: 8, marginBottom: 24 },
-  stat: { backgroundColor: '#FFFFFF', padding: 12, borderRadius: 15, flex: 1, borderColor: '#E7EBF3', borderWidth: 1 },
-  statDark: { backgroundColor: '#192C4D', borderColor: '#192C4D' },
-  statLabel: { fontWeight: '800', color: '#8390A5', fontSize: 9, letterSpacing: 0.35 },
-  statLabelLight: { fontWeight: '800', color: '#B3C4DD', fontSize: 9, letterSpacing: 0.35 },
-  statNumber: { marginTop: 8, color: '#1B3150', fontWeight: '900', fontSize: 25 },
-  statNumberLight: { marginTop: 8, color: '#FFFFFF', fontWeight: '900', fontSize: 25 },
-  label: { fontSize: 11, color: '#384E6D', fontWeight: '900', letterSpacing: 1.1, marginBottom: 10 },
+  stat: { backgroundColor: colors.surface, padding: 12, borderRadius: 15, flex: 1, borderColor: colors.border, borderWidth: 1 },
+  statDark: { backgroundColor: colors.accentSurface, borderColor: colors.accentSurface },
+  statLabel: { fontWeight: '800', color: colors.muted, fontSize: 9, letterSpacing: 0.35 },
+  statLabelLight: { fontWeight: '800', color: colors.muted, fontSize: 9, letterSpacing: 0.35 },
+  statNumber: { marginTop: 8, color: colors.text, fontWeight: '900', fontSize: 25 },
+  statNumberLight: { marginTop: 8, color: colors.text, fontWeight: '900', fontSize: 25 },
+  label: { fontSize: 11, color: colors.muted, fontWeight: '900', letterSpacing: 1.1, marginBottom: 10 },
   sectionHeading: { marginTop: 12 },
-  addButton: { backgroundColor: '#147D73', paddingHorizontal: 13, borderRadius: 12, justifyContent: 'center', alignItems: 'center' },
-  addButtonText: { color: '#FFFFFF', fontWeight: '800', fontSize: 12 },
-  feedback: { color: '#147D73', fontSize: 12, marginBottom: 8 },
-  searchInput: { backgroundColor: '#FFFFFF', borderWidth: 1, borderColor: '#E0E6F0', borderRadius: 12, paddingHorizontal: 13, paddingVertical: 13, color: '#1D3151', fontSize: 13, marginBottom: 12 },
+  addButton: { backgroundColor: colors.accent, paddingHorizontal: 13, borderRadius: 12, justifyContent: 'center', alignItems: 'center' },
+  addButtonText: { color: colors.onAccent, fontWeight: '800', fontSize: 12 },
+  feedback: { color: colors.accent, fontSize: 12, marginBottom: 8 },
+  searchInput: { backgroundColor: colors.surface, borderWidth: 1, borderColor: colors.border, borderRadius: 12, paddingHorizontal: 13, paddingVertical: 13, color: colors.text, fontSize: 13, marginBottom: 12 },
   actions: { flexDirection: 'row', justifyContent: 'space-between', gap: 7, marginBottom: 13 },
-  retryButton: { paddingVertical: 11, paddingHorizontal: 11, backgroundColor: '#E5F2EF', borderRadius: 10, flex: 1, alignItems: 'center' },
-  retryLabel: { fontSize: 11, color: '#18776D', fontWeight: '800' },
-  error: { color: '#A53D49', backgroundColor: '#FFF0F0', padding: 11, borderRadius: 10, fontWeight: '700', marginBottom: 10, fontSize: 12 },
+  retryButton: { paddingVertical: 11, paddingHorizontal: 11, backgroundColor: colors.accentSurface, borderRadius: 10, flex: 1, alignItems: 'center' },
+  retryLabel: { fontSize: 11, color: colors.accent, fontWeight: '800' },
+  error: { color: colors.danger, backgroundColor: colors.dangerSurface, padding: 11, borderRadius: 10, fontWeight: '700', marginBottom: 10, fontSize: 12 },
   loading: { alignItems: 'center', paddingTop: 24, paddingBottom: 18, gap: 10 },
-  loadingLabel: { color: '#75829A', fontSize: 12 },
-  empty: { marginTop: 30, textAlign: 'center', color: '#8490A5', lineHeight: 20, fontSize: 13 },
-  footer: { textAlign: 'center', color: '#A4AFC1', fontSize: 10, paddingTop: 30 },
+  loadingLabel: { color: colors.muted, fontSize: 12 },
+  empty: { marginTop: 30, textAlign: 'center', color: colors.muted, lineHeight: 20, fontSize: 13 },
+  footer: { textAlign: 'center', color: colors.muted, fontSize: 10, paddingTop: 30 },
 });
