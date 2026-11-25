@@ -1,5 +1,8 @@
 // Expo reemplaza esta variable al iniciar el proyecto. No debe contener secretos.
-export const API_URL = (process.env.EXPO_PUBLIC_API_URL ?? '').trim().replace(/\/+$/, '');
+import { Platform } from 'react-native';
+
+const useExpoProxy = Platform.OS === 'web' && __DEV__;
+export const API_URL = useExpoProxy ? '/api' : (process.env.EXPO_PUBLIC_API_URL ?? '').trim().replace(/\/+$/, '');
 
 export class ApiError extends Error {
   constructor(message: string, public readonly status: number = 0) {
@@ -11,7 +14,7 @@ export class ApiError extends Error {
 type Options = { method?: string; body?: unknown };
 
 export async function apiRequest<T>(path: string, options: Options = {}): Promise<T> {
-  if (!/^https?:\/\//.test(API_URL)) {
+  if (!useExpoProxy && !/^https?:\/\//.test(API_URL)) {
     throw new ApiError('Configurá EXPO_PUBLIC_API_URL en el archivo .env y reiniciá Expo.');
   }
   const controller = new AbortController();
