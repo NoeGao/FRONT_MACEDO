@@ -2,12 +2,13 @@ import { colors } from '../src/colors';
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
 import { router } from 'expo-router';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { ActivityIndicator, Alert, FlatList, Keyboard, Pressable, StyleSheet, Text, TextInput, View } from 'react-native';
+import { ActivityIndicator, Alert, FlatList, Keyboard, Pressable, Text, TextInput, View } from 'react-native';
 import { TaskCard } from '../src/components/TaskCard';
 import { StatusTabs } from '../src/components/StatusTabs';
 import { createTask, fetchTasks, removeTask, setTaskCompleted, updateTask } from '../src/services/taskService';
 import { readPriorities, savePriority } from '../src/services/priorityStore';
 import { PrioritySelector } from '../src/components/PrioritySelector';
+import { styles } from '../src/styles/taskManagerStyles';
 import type { Task, TaskPriority, TaskStatus } from '../src/types/task';
 import { filterTasks } from '../src/utils/taskFilters';
 import { isValidTaskTitle } from '../src/utils/taskValidation';
@@ -170,7 +171,7 @@ export default function TaskManagerScreen() {
             <View style={styles.eyebrowRow}>
               <Pressable accessibilityRole="button" onPress={() => router.push('/guia')} style={styles.helpButton}><Text style={styles.helpText}>Ayuda</Text></Pressable>
             </View>
-            <Text style={styles.heading}>Gestor de tareas</Text>
+            <Text style={styles.heading}>TAREAS NOELIA</Text>
             <Text style={styles.subtitle}>Las tareas se comparten con el curso. Las prioridades se guardan en este dispositivo.</Text>
             <View style={styles.statsRow}>
               <View style={[styles.stat, styles.statDark]}><Text style={styles.statLabelLight}>TAREAS</Text><Text style={styles.statNumberLight}>{tasks.length}</Text></View>
@@ -207,35 +208,3 @@ export default function TaskManagerScreen() {
     </SafeAreaView>
   );
 }
-
-
-const styles = StyleSheet.create({
-  screen: { flex: 1, backgroundColor: colors.background },
-  listContainer: { paddingHorizontal: 19, paddingTop: 18, paddingBottom: 55, flexGrow: 1 },
-  eyebrowRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end' },
-  helpButton: { backgroundColor: colors.accentSurface, paddingVertical: 8, paddingHorizontal: 11, borderRadius: 9 },
-  helpText: { fontWeight: '800', color: colors.accent, fontSize: 12 },
-  heading: { fontSize: 30, fontWeight: '900', color: colors.text, marginTop: 12 },
-  subtitle: { color: colors.muted, fontSize: 13, marginTop: 7, marginBottom: 21, lineHeight: 20 },
-  statsRow: { flexDirection: 'row', gap: 8, marginBottom: 24 },
-  stat: { backgroundColor: colors.surface, padding: 12, borderRadius: 15, flex: 1, borderColor: colors.border, borderWidth: 1 },
-  statDark: { backgroundColor: colors.accentSurface, borderColor: colors.accentSurface },
-  statLabel: { fontWeight: '800', color: colors.muted, fontSize: 9, letterSpacing: 0.35 },
-  statLabelLight: { fontWeight: '800', color: colors.muted, fontSize: 9, letterSpacing: 0.35 },
-  statNumber: { marginTop: 8, color: colors.text, fontWeight: '900', fontSize: 25 },
-  statNumberLight: { marginTop: 8, color: colors.text, fontWeight: '900', fontSize: 25 },
-  label: { fontSize: 11, color: colors.muted, fontWeight: '900', letterSpacing: 1.1, marginBottom: 10 },
-  sectionHeading: { marginTop: 12 },
-  addButton: { backgroundColor: colors.accent, paddingHorizontal: 13, borderRadius: 12, justifyContent: 'center', alignItems: 'center' },
-  addButtonText: { color: colors.onAccent, fontWeight: '800', fontSize: 12 },
-  feedback: { color: colors.accent, fontSize: 12, marginBottom: 8 },
-  searchInput: { backgroundColor: colors.surface, borderWidth: 1, borderColor: colors.border, borderRadius: 12, paddingHorizontal: 13, paddingVertical: 13, color: colors.text, fontSize: 13, marginBottom: 12 },
-  actions: { flexDirection: 'row', justifyContent: 'space-between', gap: 7, marginBottom: 13 },
-  retryButton: { paddingVertical: 11, paddingHorizontal: 11, backgroundColor: colors.accentSurface, borderRadius: 10, flex: 1, alignItems: 'center' },
-  retryLabel: { fontSize: 11, color: colors.accent, fontWeight: '800' },
-  error: { color: colors.danger, backgroundColor: colors.dangerSurface, padding: 11, borderRadius: 10, fontWeight: '700', marginBottom: 10, fontSize: 12 },
-  loading: { alignItems: 'center', paddingTop: 24, paddingBottom: 18, gap: 10 },
-  loadingLabel: { color: colors.muted, fontSize: 12 },
-  empty: { marginTop: 30, textAlign: 'center', color: colors.muted, lineHeight: 20, fontSize: 13 },
-  footer: { textAlign: 'center', color: colors.muted, fontSize: 10, paddingTop: 30 },
-});

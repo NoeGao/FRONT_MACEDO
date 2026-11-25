@@ -1,0 +1,33 @@
+import { StyleSheet } from 'react-native';
+import { colors } from '../colors';
+
+export const styles = StyleSheet.create({
+  screen: { flex: 1, backgroundColor: colors.background },
+  listContainer: { paddingHorizontal: 19, paddingTop: 18, paddingBottom: 55, flexGrow: 1 },
+  eyebrowRow: { flexDirection: 'row', alignItems: 'center', justifyContent: 'flex-end' },
+  helpButton: { backgroundColor: colors.accentSurface, paddingVertical: 8, paddingHorizontal: 11, borderRadius: 9 },
+  helpText: { fontWeight: '800', color: colors.accent, fontSize: 12 },
+  heading: { fontSize: 30, fontWeight: '900', color: colors.text, marginTop: 12 },
+  subtitle: { color: colors.muted, fontSize: 13, marginTop: 7, marginBottom: 21, lineHeight: 20 },
+  statsRow: { flexDirection: 'row', gap: 8, marginBottom: 24 },
+  stat: { backgroundColor: colors.surface, padding: 12, borderRadius: 15, flex: 1, borderColor: colors.border, borderWidth: 1 },
+  statDark: { backgroundColor: colors.accentSurface, borderColor: colors.accentSurface },
+  statLabel: { fontWeight: '800', color: colors.muted, fontSize: 9, letterSpacing: 0.35 },
+  statLabelLight: { fontWeight: '800', color: colors.muted, fontSize: 9, letterSpacing: 0.35 },
+  statNumber: { marginTop: 8, color: colors.text, fontWeight: '900', fontSize: 25 },
+  statNumberLight: { marginTop: 8, color: colors.text, fontWeight: '900', fontSize: 25 },
+  label: { fontSize: 11, color: colors.muted, fontWeight: '900', letterSpacing: 1.1, marginBottom: 10 },
+  sectionHeading: { marginTop: 12 },
+  addButton: { backgroundColor: colors.accent, paddingHorizontal: 13, borderRadius: 12, justifyContent: 'center', alignItems: 'center' },
+  addButtonText: { color: colors.onAccent, fontWeight: '800', fontSize: 12 },
+  feedback: { color: colors.accent, fontSize: 12, marginBottom: 8 },
+  searchInput: { backgroundColor: colors.surface, borderWidth: 1, borderColor: colors.border, borderRadius: 12, paddingHorizontal: 13, paddingVertical: 13, color: colors.text, fontSize: 13, marginBottom: 12 },
+  actions: { flexDirection: 'row', justifyContent: 'space-between', gap: 7, marginBottom: 13 },
+  retryButton: { paddingVertical: 11, paddingHorizontal: 11, backgroundColor: colors.accentSurface, borderRadius: 10, flex: 1, alignItems: 'center' },
+  retryLabel: { fontSize: 11, color: colors.accent, fontWeight: '800' },
+  error: { color: colors.danger, backgroundColor: colors.dangerSurface, padding: 11, borderRadius: 10, fontWeight: '700', marginBottom: 10, fontSize: 12 },
+  loading: { alignItems: 'center', paddingTop: 24, paddingBottom: 18, gap: 10 },
+  loadingLabel: { color: colors.muted, fontSize: 12 },
+  empty: { marginTop: 30, textAlign: 'center', color: colors.muted, lineHeight: 20, fontSize: 13 },
+  footer: { textAlign: 'center', color: colors.muted, fontSize: 10, paddingTop: 30 },
+});
